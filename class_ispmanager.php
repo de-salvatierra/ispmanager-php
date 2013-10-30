@@ -1,8 +1,7 @@
 <?php
 /**
  * Класс для работы с ispManager
- * @author CraftSoft Team <info@craft-soft.ru>
- * @copyright (c) 2013, CraftSoft Team
+ * @author Александр Урих <urichalex@mail.ru>
  * @license Проприетарное программное обеспечение
  * @version 1.0
  */
