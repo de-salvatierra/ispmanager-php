@@ -163,29 +163,9 @@ class ispManager {
 
 		// Если есть ошибка, выводим ее
 		if(isset($json->error))
-			return isset($json->error->msg) ? $json->error->msg : $this->getError($json->error->code);
+			return isset($json->error->msg) ? $json->error->msg : $json->error->code;
 
 		return TRUE;
-	}
-
-	/**
-	 * Конвертация ошибок ISP в текст
-	 * @param integer $code
-	 * @return string
-	 */
-	protected function getError($code)
-	{
-		switch($code)
-		{
-			case 2:
-				return 'Пользователь уже существует в ISP';
-			case 3:
-				return 'Пользователя не существует в ISP';
-			case 8:
-				return 'Домашняя папка пользователя уже существует';
-		}
-
-		return 'Неизвестная ошибка';
 	}
 
 }
