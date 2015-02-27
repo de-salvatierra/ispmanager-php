@@ -6,7 +6,7 @@ namespace Urichalex;
  * Класс для работы с ispManager
  * @author Александр Урих <urichalex@mail.ru>
  * @license Проприетарное программное обеспечение
- * @version 1.1
+ * @version 1.1.1
  */
 class IspManager {
 
@@ -175,10 +175,38 @@ class IspManager {
 
         // Если есть ошибка, выводим ее
         if (isset($json->error)) {
-            $this->errors[] = isset($json->error->msg) ? $json->error->msg : $json->error->code;
+            if(isset($json->error->msg) && trim($json->error->msg)) {
+                $this->errors[] = $json->error->msg;
+            } else {
+                $this->errors[] = self::getError($json->error->code);
+            }
             return false;
         }
         return true;
     }
+    
+    /**
+	 * Конвертация ошибок ISP в текст
+	 * @param integer $code
+	 * @return string
+	 */
+	protected static function getError($code)
+	{
+		switch($code)
+		{
+			case 2:
+				return 'Пользователь уже существует в ISP';
+			case 3:
+				return 'Пользователя не существует в ISP';
+			case 4:
+				return 'Не все параметры переданы';
+            case 6:
+				return 'Неверный IP адрес, назначаемый пользователю';
+			case 8:
+				return 'Домашняя папка пользователя уже существует';
+		}
+
+		return 'Неизвестная ошибка';
+	}
 
 }
