@@ -6,7 +6,7 @@
  * @version 1.0
  */
 
-class ispManager {
+class IspManager {
 
 	/**
 	 * Сформированный URL 
