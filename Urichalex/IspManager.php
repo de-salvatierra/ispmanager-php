@@ -51,18 +51,11 @@ class IspManager {
      */
     public $port;
 
-    /**
-     * Шаблон прав пользователей
-     * @var string 
-     */
-    public $preset;
-
-    public function __construct($admin, $pass, $preset, $domain = 'localhost', $ip = null, $port = null) {
+    public function __construct($admin, $pass, $domain = 'localhost', $ip = null, $port = null) {
         $this->domain = $domain;
         $this->port = $port;
         $this->admin = $admin;
         $this->pass = $pass;
-        $this->preset = $preset;
         $this->ip = $ip;
 
         $this->url = 'https://' . $this->domain . ($this->port !== null ? ':' . $this->port : '/manager') .
@@ -74,12 +67,12 @@ class IspManager {
      * @param string $name Имя нового пользователя
      * @param string $pass Пароль нового пользователя
      * @param string $email Мыло нового пользователя
-     * @param string $preset Тариф веб хостинга
+     * @param string $preset Шаблон
      * @param string $domain Домен для пользователя
      * @param string $ip IP адрес назначаемый пользователю
      * @return bool|string Возвращает true если ошибок нет, или ошибку в xml формате
      */
-    public function ispUserAdd($name, $pass, $email, $domain = null, $ip = null) {
+    public function ispUserAdd($name, $pass, $email, $preset, $domain = null, $ip = null) {
         if ($ip !== null && !filter_var($ip, FILTER_VALIDATE_IP, array('flags' => FILTER_FLAG_IPV4))) {
             $this->errors[] = 'Неверно введен IP';
             return false;
@@ -96,7 +89,7 @@ class IspManager {
                 '&owner=' . $this->admin .
                 '&ip=' . ($ip === null ? $this->ip : $ip) .
                 ($domain ? '&domain=' . $domain : '') .
-                '&preset=' . $this->preset .
+                '&preset=' . $preset .
                 '&email=' . $email;
         return $this->ispQuery($params);
     }
