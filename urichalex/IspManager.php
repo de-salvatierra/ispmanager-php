@@ -1,6 +1,6 @@
 <?php
 
-namespace urichalex;
+namespace Urichalex;
 
 /**
  * Класс для работы с ispManager
