@@ -1,6 +1,6 @@
 {
     "name":"urichalex/ispmanager",
-    "version":"1.0.0",
+    "version":"1.1.0",
     "description": "Управление сервером под управлением панели IspManager 4",
     "license": "GPL-3.0",
     "require":{
