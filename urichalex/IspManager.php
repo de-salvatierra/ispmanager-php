@@ -1,11 +1,13 @@
 <?php
+
+namespace urichalex;
+
 /**
  * Класс для работы с ispManager
  * @author Александр Урих <urichalex@mail.ru>
  * @license Проприетарное программное обеспечение
  * @version 1.0
  */
-
 class IspManager {
 
 	/**
