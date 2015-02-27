@@ -1,6 +1,7 @@
 {
     "name":"urichalex/ispmanager",
     "version":"1.0.0",
+    "description": "Управление сервером под управлением панели IspManager 4",
     "require":{
         "php":">=5.3.0"
     },
